@@ -1,6 +1,6 @@
 module x-ui-exporter
 
-go 1.24.1
+go 1.25
 
 require (
 	github.com/digilolnet/client3xui v0.0.0-20250207025941-9ee70f528c9b
