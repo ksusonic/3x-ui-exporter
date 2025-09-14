@@ -150,7 +150,7 @@ func (a *APIClient) GetAuthToken() (*http.Cookie, error) {
 }
 
 func (a *APIClient) FetchOnlineUsersCount(cookie *http.Cookie) error {
-	body, err := a.sendRequest("/panel/inbound/onlines", http.MethodPost, cookie)
+	body, err := a.sendRequest("/panel/api/inbounds/onlines", http.MethodPost, cookie)
 	if err != nil {
 		return fmt.Errorf("inbound onlines: %w", err)
 	}
@@ -176,7 +176,7 @@ func (a *APIClient) FetchServerStatus(cookie *http.Cookie) error {
 	// Clear old version metric to avoid accumulating obsolete label values
 	metrics.XrayVersion.Reset()
 
-	body, err := a.sendRequest("/server/status", http.MethodPost, cookie)
+	body, err := a.sendRequest("/panel/api/server/status", http.MethodGet, cookie)
 	if err != nil {
 		return fmt.Errorf("system stats: %w", err)
 	}
